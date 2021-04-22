@@ -19,10 +19,12 @@ export const Wrapper = styled.div`
     padding-left: 16px;
     margin: 0px;
     // width: auto;
+
   }
   @media ${device.mobileL}{
     padding-left: 8px;
     margin-left: 0px;
+    min-height: 150px;
   }
 `
 
@@ -48,6 +50,11 @@ export const ElementsContainer = styled.div`
     top: 25%;
     left: -5%;
   }
+
+  @media ${device.mobileL}{
+    width: 80vw;
+    min-height: 150px;
+  }
 `
 
 export const MegagonLogo = styled.img`
@@ -70,7 +77,7 @@ export const MegagonLogo = styled.img`
     margin-left: 12px;
   }
   @media ${device.mobileL}{
-    height: auto;
+    height: 30px;
     width: 280px;
   }
 `
@@ -82,11 +89,18 @@ export const Title = styled.div`
   color: #000000;
   letter-spacing: 1px;
   /* position: relative;
-  left: 70% */
-  /* align: center; */
+  left: 70%;
+  align: center;
   font-weight: bold;
-  background: gray;
+  background: gray; */
+  @media ${device.mobileL}{
+    font-size: 18px;
+    letter-spacing: .9px;
+    text-align: center;
+    font-weight: bold;
+  }
 `
+
 
 export const LinkContainer = styled.div`
   display: inline-block;
@@ -95,6 +109,16 @@ export const LinkContainer = styled.div`
   padding-top: 10px;
   right: 18%;
   text-transform: uppercase;
+
+  @media ${device.mobileL}{
+    display: none;
+  }
+`
+
+export const MenuContainer = styled.div`
+  @media ${device.MobileL}{
+    display: none;
+  }
 `
 
 

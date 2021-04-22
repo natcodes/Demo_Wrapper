@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Main from './components/top_nav';
+import Main from './components/header_footer';
+// import App from './components/App';
 import reportWebVitals from './reportWebVitals';
+let props = {name: "hello", pub_ancor: "https://www.megagon.ai/", blog_link: "https://www.megagon.ai/"}
 
 ReactDOM.render(
   <React.StrictMode>
-    <Main />
+    <Main {...props}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

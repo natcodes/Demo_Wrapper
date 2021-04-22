@@ -1,54 +1,68 @@
-import React, {Component} from 'react';
-import { Wrapper, MegagonLogo, Title, LinkContainer, PubLink, Image, ElementsContainer} from '../styles/banner_styles';
+import React from 'react';
+import { Wrapper, MegagonLogo, Title, LinkContainer, PubLink, Image, ElementsContainer} from '../styles/nav_styles';
 import Logo from '../images/color_logo_transparent.svg';
 import {MainWrapper} from '../styles/main_styles';
 import {FootWrapper, FooterInner, SiteText, FooterItems, SocialIconContainer, SocialIcon, SocialLink, NavItems, Items, Alink } from '../styles/footer_styles';
-
+import MobileMenu from "./menu";
 import fbIcon from "../images/fbIcon.png";
 import twitterIcon from "../images/twitterIcon.png";
 import linkedIcon from "../images/linkedinIcon.png";
 import arrow from "../images/right-arrow.png";
 
-const demo_title = "Ditto"
-const name = demo_title ? demo_title : "Default";
+// const demo_title = "Ditto"
+// const name = demo_title ? demo_title : "Default";
+ // let props = {name: "hello", pub_ancor: "https://www.megagon.ai/", blog_link: "https://www.megagon.ai/"}
 
-class Main extends Component {
+function Main({ children, ...props}){
 
-render(){
   return(
-      <MainWrapper>
-        <Nav />
+      <MainWrapper >
+        <Nav {...props}/>
+          {children}
         <Footer />
       </MainWrapper>
-  )
-}
-
+    )
 }
 
 export default Main;
 
 
-const Nav = ({demo_name, publication_link, _blog_link}) => {
+const Nav = ({...props}) => {
+
+
+  let isBLinkShown = props.blog_link ? true : false;
+  console.log("blink", isBLinkShown)
+  let isPLinkShown = props.pub_ancor ? true : false;
+  console.log("P", isPLinkShown)
 
   const onBannerClick = () => {
-      console.log("banner clicked")
       window.open("https://www.megagon.ai/", "_blank")
   };
+
     return(
       <Wrapper>
         <ElementsContainer>
           <MegagonLogo src={Logo} onClick={()=>onBannerClick()}/>
           <LinkContainer>
-              <PubLink href="https://megagon.ai/publications/" target="_blank"> BLOG
-              </PubLink>
-              <PubLink href="https://megagon.ai/publications/#SnippextPaper" target="_blank"> PAPER
-                <Image src={arrow} alt="go" />
-              </PubLink>
+              {
+                isBLinkShown &&
+                <PubLink href={props.blog_link} target="_blank"> BLOG
+                </PubLink>
+              }
+              {
+                isPLinkShown &&
+                <PubLink href={"https://megagon.ai/our-publications/"+ props.pub_ancor} target="_blank"> PAPER
+                  <Image src={arrow} alt="go" />
+                </PubLink>
+              }
           </LinkContainer>
+          <MobileMenu {...props}/>
         </ElementsContainer>
       </Wrapper>
     )
 };
+
+
 
 //no props needed
 const Footer =()=>{
